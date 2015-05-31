@@ -14,9 +14,7 @@ let step ((x, y), d) c = match c, d with
 let run s = String.fold s ~init:((0,0), N) ~f:step
 
 let analyze ((x, y), d) = match x, y, d with
-  | 0, 0, _ -> "Cycle detected in 1 step."
-  | _, _, N -> "No cycle."
-  | _, _, S -> "Cycle detected in 2 steps."
-  | _ -> "Cycle detected in 4 steps."
+  | a, b, N, when (a,b) <> (0,0) -> "No cycle."
+  | _ -> "Cycle detected."
 
 let _ = read_line () |> run |> analyze |> print_endline
