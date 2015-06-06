@@ -12,7 +12,7 @@ let step ((x, y), d) c = match c, d with
   | _      -> failwith "Invalid input"
 
 let go s = match String.fold s ~init:((0,0), N) ~f:step with
-  | a, b, N, when (a,b) <> (0,0) -> "No cycle."
+  | (a, b), N when (a,b) <> (0,0) -> "No cycle."
   | _ -> "Cycle detected."
 
 let _ = read_line () |> go |> print_endline
